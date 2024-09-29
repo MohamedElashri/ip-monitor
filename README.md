@@ -21,7 +21,7 @@ To start monitoring and logging IP address changes, use the following commands:
 
 - **Encrypted Logging:**
   ```bash
-  ./ip_monitor.sh.sh -e
+  ./ip_monitor.sh -e
   ```
 
 ### Decrypt the Encrypted Log
@@ -29,17 +29,17 @@ To decrypt the encrypted log file:
 
 - Use the default input and output paths from `.env`:
   ```bash
-  ./ip_monitor.sh.sh -d
+  ./ip_monitor.sh -d
   ```
 
 - Specify custom input and output paths:
   ```bash
-  ./ip_monitor.sh.sh -d -i /custom/path/to/encrypted.log -o /custom/path/to/decrypted.log
+  ./ip_monitor.sh -d -i /custom/path/to/encrypted.log -o /custom/path/to/decrypted.log
   ```
 
 - Use a custom passphrase:
   ```bash
-  ./ip_monitor.sh.sh -d -p "your-custom-passphrase"
+  ./ip_monitor.sh -d -p "your-custom-passphrase"
   ```
 
 ### Environment Configuration
@@ -84,13 +84,13 @@ DECRYPTED_LOG_FILE_PATH="./decrypted_ip_log.txt"
 
 - **Encrypted Logging Mode:**
   ```bash
-  ./ip_monitor.sh.sh -e
+  ./ip_monitor.sh -e
   ```
   This will log IP changes, but the logs will be encrypted using the AES-256-CBC algorithm. The encrypted log will be saved to the location specified in `ENCRYPTED_LOG_FILE_PATH`.
 
 - **Decrypt the Encrypted Log:**
   ```bash
-  ./ip_monitor.sh.sh -d
+  ./ip_monitor.sh -d
   ```
   This will decrypt the encrypted log using the default paths specified in the `.env` file and save the result to the `DECRYPTED_LOG_FILE_PATH`. 
 
@@ -101,7 +101,7 @@ DECRYPTED_LOG_FILE_PATH="./decrypted_ip_log.txt"
 
   To specify a custom decryption passphrase:
   ```bash
-  ./ip_monitor.sh.sh -d -p "custom-passphrase"
+  ./ip_monitor.sh -d -p "custom-passphrase"
   ```
 
 ### Customizing the Script
