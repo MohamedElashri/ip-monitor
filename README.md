@@ -4,12 +4,19 @@ This script monitors your public IP address, logs any changes, and supports both
 
 ## Usage
 
+You will need to clone this repository 
+
+```bash
+git clone https://github.com/MohamedElashri/ip-monitor
+cd ip-monitor
+```
+
 ### Logging IP Address Changes
 To start monitoring and logging IP address changes, use the following commands:
 
 - **Plain Logging:**
   ```bash
-  ./monitor_ip.sh -l
+  ./ip_monitor.sh -l
   ```
 
 - **Encrypted Logging:**
