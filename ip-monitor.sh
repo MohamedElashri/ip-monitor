@@ -1,15 +1,20 @@
 #!/bin/bash
 
-# Get the directory where this script is located
-SCRIPT_DIR="$(dirname "$0")"
+# Get the directory of the script
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Load the .env file from the same directory as the script
-if [[ -f "$SCRIPT_DIR/.env" ]]; then
-    source "$SCRIPT_DIR/.env"
-else
+# Change to the script directory
+cd "$SCRIPT_DIR"
+
+# Check if .env file exists
+if [ ! -f ".env" ]; then
     echo "Error: .env file not found in $SCRIPT_DIR"
+    echo "Please copy sample.env to .env and configure it."
     exit 1
 fi
+
+# Source the .env file
+source .env
 
 # Function to display help
 usage() {
