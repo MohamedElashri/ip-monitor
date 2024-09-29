@@ -4,10 +4,10 @@
 SCRIPT_DIR="$(dirname "$0")"
 
 # Load the .env file from the same directory as the script
-if [[ -f "$SCRIPT_DIR/config.env" ]]; then
-    source "$SCRIPT_DIR/config.env"
+if [[ -f "$SCRIPT_DIR/.env" ]]; then
+    source "$SCRIPT_DIR/.env"
 else
-    echo "Error: config.env file not found in $SCRIPT_DIR"
+    echo "Error: .env file not found in $SCRIPT_DIR"
     exit 1
 fi
 
