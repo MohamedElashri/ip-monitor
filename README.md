@@ -104,6 +104,40 @@ DECRYPTED_LOG_FILE_PATH="./decrypted_ip_log.txt"
   ./ip_monitor.sh -d -p "custom-passphrase"
   ```
 
+#### Running the Script in Cron Jobs
+
+To run the script automatically at specified intervals, you can use cron jobs. Below are different configurations to run the script via cron.
+
+- **Plain Logging Every 10 Minutes**:
+  Add the following to your crontab:
+  ```bash
+  */10 * * * * /path/to/monitor_ip.sh -l >> /path/to/logfile.log 2>&1
+  ```
+
+  This will check the IP and log any changes in plain text every 10 minutes. The output and errors will be logged in `/path/to/logfile.log`.
+
+- **Encrypted Logging Every 15 Minutes**:
+  Add the following to your crontab:
+  ```bash
+  */15 * * * * /path/to/monitor_ip.sh -e >> /path/to/encrypted_logfile.log 2>&1
+  ```
+
+  This will check the IP and log any changes in encrypted format every 15 minutes. The output and errors will be logged in `/path/to/encrypted_logfile.log`.
+
+- **Decrypt the Log Once Daily**:
+  If you want to decrypt the logs daily at midnight, add this to your crontab:
+  ```bash
+  0 0 * * * /path/to/monitor_ip.sh -d >> /path/to/decrypted_logfile.log 2>&1
+  ```
+
+  This will decrypt the encrypted log at midnight every day and save the output to `/path/to/decrypted_logfile.log`.
+
+#### Important Notes for Cron Jobs:
+1. **Environment File Location**: The script assumes the `.env` file is in the same directory as the script. Cron jobs often don’t run from the same working directory as your shell, so make sure to use absolute paths in your crontab. The script will always load the `.env` file correctly as long as it is in the same directory as the script.
+   
+2. **Log Output**: Always redirect the output and errors from cron jobs to log files (`>> /path/to/logfile.log 2>&1`) to help with debugging and tracking issues.
+
+
 ### Customizing the Script
 
 You can customize the behavior of the script by editing the `.env` file. For example:
